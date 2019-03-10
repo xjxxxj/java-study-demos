@@ -7,10 +7,29 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="easyexceldemo1" />
+        <module name="mybatisdemo1" />
+        <module name="nettydemo1" />
+        <module name="niodemo1" />
+        <module name="springboot-demo1" />
+        <module name="test" />
+        <module name="webservicedemo1" />
+        <module name="webservicedemo2" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="easyexceldemo1" target="1.8" />
+      <module name="mybatisdemo1" target="1.8" />
+      <module name="nettydemo1" target="1.8" />
+      <module name="niodemo1" target="1.8" />
+      <module name="springboot-demo1" target="1.8" />
+      <module name="test" target="1.8" />
+      <module name="webservicedemo1" target="1.8" />
+      <module name="webservicedemo2" target="1.8" />
     </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="springboot-demo1" options="" />
+    </option>
   </component>
 </project>
