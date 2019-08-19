@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xjx.javastudydemos.mybatisdemo1.mapper.PersonMapper">
+    <update id="changeAge">
+        UPDATE demo.person
+        SET age = age + #{changed,jdbcType=INTEGER}
+        WHERE id = #{id,jdbcType=INTEGER}
+        <if test="0 > changed">
+            AND age >= -#{changed}
+        </if>
+    </update>
+</mapper>

@@ -1,7 +1,10 @@
 package com.xjx.javastudydemos.springbootdemo1.controller;
 
+import com.xjx.javastudydemos.springbootdemo1.controller.po.TestGetter;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Date;
 
 /**
  * @program: java-study-demos
@@ -22,6 +25,11 @@ public class TestController {
     public String sayHello(){
         return "Hello World!" ;
     }
-
-
+    @RequestMapping("getter")
+    public TestGetter testGetter(){
+        TestGetter testGetter = new TestGetter();
+        testGetter.setId(1L);
+        testGetter.setBirthday(new Date(System.currentTimeMillis() - 4656464656L));
+        return testGetter;
+    }
 }

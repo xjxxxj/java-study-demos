@@ -6,29 +6,57 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="demo1" />
+        <module name="demo2" />
         <module name="easyexceldemo1" />
+        <module name="mybatis-demo1" />
+        <module name="mybatis-demo2" />
+        <module name="mybatis-generator" />
+        <module name="mybatis-plus-demo1" />
         <module name="mybatisdemo1" />
+        <module name="mygenerator" />
         <module name="nettydemo1" />
         <module name="niodemo1" />
+        <module name="rabbitmqdemo" />
+        <module name="rocketmq-demo1" />
+        <module name="rocketmq-demo2" />
         <module name="springboot-demo1" />
+        <module name="springboot-rabbitmq" />
         <module name="test" />
+        <module name="test-helloworld" />
+        <module name="test-helloworld (1)" />
         <module name="webservicedemo1" />
         <module name="webservicedemo2" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="demo1" target="1.8" />
+      <module name="demo2" target="1.8" />
       <module name="easyexceldemo1" target="1.8" />
+      <module name="mybatis-demo1" target="1.8" />
+      <module name="mybatis-demo2" target="1.8" />
+      <module name="mybatis-generator" target="1.8" />
+      <module name="mybatis-plus-demo1" target="1.8" />
       <module name="mybatisdemo1" target="1.8" />
+      <module name="mygenerator" target="1.5" />
       <module name="nettydemo1" target="1.8" />
       <module name="niodemo1" target="1.8" />
+      <module name="rabbitmqdemo" target="8" />
+      <module name="rocketmq-demo1" target="1.8" />
+      <module name="rocketmq-demo2" target="1.8" />
       <module name="springboot-demo1" target="1.8" />
+      <module name="springboot-rabbitmq" target="1.8" />
       <module name="test" target="1.8" />
+      <module name="test-helloworld" target="1.5" />
+      <module name="test-helloworld (1)" target="1.5" />
       <module name="webservicedemo1" target="1.8" />
       <module name="webservicedemo2" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="mybatis-generator" options="" />
+      <module name="mybatis-plus-demo1" options="" />
       <module name="springboot-demo1" options="" />
     </option>
   </component>

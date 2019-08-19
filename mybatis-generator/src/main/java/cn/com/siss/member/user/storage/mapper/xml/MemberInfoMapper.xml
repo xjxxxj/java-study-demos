@@ -1,0 +1,927 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.siss.member.user.storage.mapper.MemberInfoMapper" >
+  <resultMap id="BaseResultMap" type="cn.com.siss.member.user.api.domain.MemberInfo" >
+    <constructor >
+      <idArg column="id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="merchant_id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="branch_id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="branch_no" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="branch_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="level_id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="level_no" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="level_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="member_no" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="member_name" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="member_mobile" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="wechat_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="identity_card" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="face_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="parent_member_id" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="parent_member_no" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="member_fee" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="start_date" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="end_date" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="status" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="operate_id" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="operate_date" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="member_birthday" jdbcType="DATE" javaType="java.util.Date" />
+      <arg column="birth_flag" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="birth_updated" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="member_sex" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="marriage" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="nation" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="blood_type" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="height" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="weight" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="degree" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="telephone" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="email" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="zip_code" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="address" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="register_place" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="live_place" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="birth_place" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="company" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="duty" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="salary_level" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="hobby" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="password" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="created_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="created_by" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="updated_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="updated_by" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="remark" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="deleted" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, merchant_id, branch_id, branch_no, branch_name, level_id, level_no, level_name, 
+    member_no, member_name, member_mobile, wechat_id, identity_card, face_id, parent_member_id, 
+    parent_member_no, member_fee, start_date, end_date, status, operate_id, operate_date, 
+    member_birthday, birth_flag, birth_updated, member_sex, marriage, nation, blood_type, 
+    height, weight, degree, telephone, email, zip_code, address, register_place, live_place, 
+    birth_place, company, duty, salary_level, hobby, password, created_time, created_by, 
+    updated_time, updated_by, remark, deleted
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="cn.com.siss.member.user.api.domain.MemberInfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from member_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="limitStart != null and limitStart>=0" >
+      limit #{limitStart} , #{limitEnd}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from member_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from member_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="cn.com.siss.member.user.api.domain.MemberInfoExample" >
+    delete from member_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="cn.com.siss.member.user.api.domain.MemberInfo" >
+    insert into member_info (id, merchant_id, branch_id, 
+      branch_no, branch_name, level_id, 
+      level_no, level_name, member_no, 
+      member_name, member_mobile, wechat_id, 
+      identity_card, face_id, parent_member_id, 
+      parent_member_no, member_fee, start_date, 
+      end_date, status, operate_id, 
+      operate_date, member_birthday, birth_flag, 
+      birth_updated, member_sex, marriage, 
+      nation, blood_type, height, 
+      weight, degree, telephone, 
+      email, zip_code, address, 
+      register_place, live_place, birth_place, 
+      company, duty, salary_level, 
+      hobby, password, created_time, 
+      created_by, updated_time, updated_by, 
+      remark, deleted)
+    values (#{id,jdbcType=BIGINT}, #{merchantId,jdbcType=BIGINT}, #{branchId,jdbcType=BIGINT}, 
+      #{branchNo,jdbcType=VARCHAR}, #{branchName,jdbcType=VARCHAR}, #{levelId,jdbcType=BIGINT}, 
+      #{levelNo,jdbcType=VARCHAR}, #{levelName,jdbcType=VARCHAR}, #{memberNo,jdbcType=VARCHAR}, 
+      #{memberName,jdbcType=VARCHAR}, #{memberMobile,jdbcType=VARCHAR}, #{wechatId,jdbcType=VARCHAR}, 
+      #{identityCard,jdbcType=VARCHAR}, #{faceId,jdbcType=VARCHAR}, #{parentMemberId,jdbcType=BIGINT}, 
+      #{parentMemberNo,jdbcType=VARCHAR}, #{memberFee,jdbcType=INTEGER}, #{startDate,jdbcType=DATE}, 
+      #{endDate,jdbcType=DATE}, #{status,jdbcType=INTEGER}, #{operateId,jdbcType=VARCHAR}, 
+      #{operateDate,jdbcType=TIMESTAMP}, #{memberBirthday,jdbcType=DATE}, #{birthFlag,jdbcType=INTEGER}, 
+      #{birthUpdated,jdbcType=INTEGER}, #{memberSex,jdbcType=INTEGER}, #{marriage,jdbcType=INTEGER}, 
+      #{nation,jdbcType=VARCHAR}, #{bloodType,jdbcType=VARCHAR}, #{height,jdbcType=DECIMAL}, 
+      #{weight,jdbcType=DECIMAL}, #{degree,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{zipCode,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{registerPlace,jdbcType=VARCHAR}, #{livePlace,jdbcType=VARCHAR}, #{birthPlace,jdbcType=VARCHAR}, 
+      #{company,jdbcType=VARCHAR}, #{duty,jdbcType=VARCHAR}, #{salaryLevel,jdbcType=VARCHAR}, 
+      #{hobby,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{createdTime,jdbcType=TIMESTAMP}, 
+      #{createdBy,jdbcType=VARCHAR}, #{updatedTime,jdbcType=TIMESTAMP}, #{updatedBy,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{deleted,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.com.siss.member.user.api.domain.MemberInfo" >
+    insert into member_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="merchantId != null" >
+        merchant_id,
+      </if>
+      <if test="branchId != null" >
+        branch_id,
+      </if>
+      <if test="branchNo != null" >
+        branch_no,
+      </if>
+      <if test="branchName != null" >
+        branch_name,
+      </if>
+      <if test="levelId != null" >
+        level_id,
+      </if>
+      <if test="levelNo != null" >
+        level_no,
+      </if>
+      <if test="levelName != null" >
+        level_name,
+      </if>
+      <if test="memberNo != null" >
+        member_no,
+      </if>
+      <if test="memberName != null" >
+        member_name,
+      </if>
+      <if test="memberMobile != null" >
+        member_mobile,
+      </if>
+      <if test="wechatId != null" >
+        wechat_id,
+      </if>
+      <if test="identityCard != null" >
+        identity_card,
+      </if>
+      <if test="faceId != null" >
+        face_id,
+      </if>
+      <if test="parentMemberId != null" >
+        parent_member_id,
+      </if>
+      <if test="parentMemberNo != null" >
+        parent_member_no,
+      </if>
+      <if test="memberFee != null" >
+        member_fee,
+      </if>
+      <if test="startDate != null" >
+        start_date,
+      </if>
+      <if test="endDate != null" >
+        end_date,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="operateId != null" >
+        operate_id,
+      </if>
+      <if test="operateDate != null" >
+        operate_date,
+      </if>
+      <if test="memberBirthday != null" >
+        member_birthday,
+      </if>
+      <if test="birthFlag != null" >
+        birth_flag,
+      </if>
+      <if test="birthUpdated != null" >
+        birth_updated,
+      </if>
+      <if test="memberSex != null" >
+        member_sex,
+      </if>
+      <if test="marriage != null" >
+        marriage,
+      </if>
+      <if test="nation != null" >
+        nation,
+      </if>
+      <if test="bloodType != null" >
+        blood_type,
+      </if>
+      <if test="height != null" >
+        height,
+      </if>
+      <if test="weight != null" >
+        weight,
+      </if>
+      <if test="degree != null" >
+        degree,
+      </if>
+      <if test="telephone != null" >
+        telephone,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="zipCode != null" >
+        zip_code,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="registerPlace != null" >
+        register_place,
+      </if>
+      <if test="livePlace != null" >
+        live_place,
+      </if>
+      <if test="birthPlace != null" >
+        birth_place,
+      </if>
+      <if test="company != null" >
+        company,
+      </if>
+      <if test="duty != null" >
+        duty,
+      </if>
+      <if test="salaryLevel != null" >
+        salary_level,
+      </if>
+      <if test="hobby != null" >
+        hobby,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="createdTime != null" >
+        created_time,
+      </if>
+      <if test="createdBy != null" >
+        created_by,
+      </if>
+      <if test="updatedTime != null" >
+        updated_time,
+      </if>
+      <if test="updatedBy != null" >
+        updated_by,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="deleted != null" >
+        deleted,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="merchantId != null" >
+        #{merchantId,jdbcType=BIGINT},
+      </if>
+      <if test="branchId != null" >
+        #{branchId,jdbcType=BIGINT},
+      </if>
+      <if test="branchNo != null" >
+        #{branchNo,jdbcType=VARCHAR},
+      </if>
+      <if test="branchName != null" >
+        #{branchName,jdbcType=VARCHAR},
+      </if>
+      <if test="levelId != null" >
+        #{levelId,jdbcType=BIGINT},
+      </if>
+      <if test="levelNo != null" >
+        #{levelNo,jdbcType=VARCHAR},
+      </if>
+      <if test="levelName != null" >
+        #{levelName,jdbcType=VARCHAR},
+      </if>
+      <if test="memberNo != null" >
+        #{memberNo,jdbcType=VARCHAR},
+      </if>
+      <if test="memberName != null" >
+        #{memberName,jdbcType=VARCHAR},
+      </if>
+      <if test="memberMobile != null" >
+        #{memberMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="wechatId != null" >
+        #{wechatId,jdbcType=VARCHAR},
+      </if>
+      <if test="identityCard != null" >
+        #{identityCard,jdbcType=VARCHAR},
+      </if>
+      <if test="faceId != null" >
+        #{faceId,jdbcType=VARCHAR},
+      </if>
+      <if test="parentMemberId != null" >
+        #{parentMemberId,jdbcType=BIGINT},
+      </if>
+      <if test="parentMemberNo != null" >
+        #{parentMemberNo,jdbcType=VARCHAR},
+      </if>
+      <if test="memberFee != null" >
+        #{memberFee,jdbcType=INTEGER},
+      </if>
+      <if test="startDate != null" >
+        #{startDate,jdbcType=DATE},
+      </if>
+      <if test="endDate != null" >
+        #{endDate,jdbcType=DATE},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="operateId != null" >
+        #{operateId,jdbcType=VARCHAR},
+      </if>
+      <if test="operateDate != null" >
+        #{operateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="memberBirthday != null" >
+        #{memberBirthday,jdbcType=DATE},
+      </if>
+      <if test="birthFlag != null" >
+        #{birthFlag,jdbcType=INTEGER},
+      </if>
+      <if test="birthUpdated != null" >
+        #{birthUpdated,jdbcType=INTEGER},
+      </if>
+      <if test="memberSex != null" >
+        #{memberSex,jdbcType=INTEGER},
+      </if>
+      <if test="marriage != null" >
+        #{marriage,jdbcType=INTEGER},
+      </if>
+      <if test="nation != null" >
+        #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodType != null" >
+        #{bloodType,jdbcType=VARCHAR},
+      </if>
+      <if test="height != null" >
+        #{height,jdbcType=DECIMAL},
+      </if>
+      <if test="weight != null" >
+        #{weight,jdbcType=DECIMAL},
+      </if>
+      <if test="degree != null" >
+        #{degree,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="zipCode != null" >
+        #{zipCode,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="registerPlace != null" >
+        #{registerPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="livePlace != null" >
+        #{livePlace,jdbcType=VARCHAR},
+      </if>
+      <if test="birthPlace != null" >
+        #{birthPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="company != null" >
+        #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="duty != null" >
+        #{duty,jdbcType=VARCHAR},
+      </if>
+      <if test="salaryLevel != null" >
+        #{salaryLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="hobby != null" >
+        #{hobby,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTime != null" >
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedTime != null" >
+        #{updatedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+        #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null" >
+        #{deleted,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="cn.com.siss.member.user.api.domain.MemberInfoExample" resultType="java.lang.Integer" >
+    select count(*) from member_info
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update member_info
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.merchantId != null" >
+        merchant_id = #{record.merchantId,jdbcType=BIGINT},
+      </if>
+      <if test="record.branchId != null" >
+        branch_id = #{record.branchId,jdbcType=BIGINT},
+      </if>
+      <if test="record.branchNo != null" >
+        branch_no = #{record.branchNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.branchName != null" >
+        branch_name = #{record.branchName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.levelId != null" >
+        level_id = #{record.levelId,jdbcType=BIGINT},
+      </if>
+      <if test="record.levelNo != null" >
+        level_no = #{record.levelNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.levelName != null" >
+        level_name = #{record.levelName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.memberNo != null" >
+        member_no = #{record.memberNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.memberName != null" >
+        member_name = #{record.memberName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.memberMobile != null" >
+        member_mobile = #{record.memberMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="record.wechatId != null" >
+        wechat_id = #{record.wechatId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.identityCard != null" >
+        identity_card = #{record.identityCard,jdbcType=VARCHAR},
+      </if>
+      <if test="record.faceId != null" >
+        face_id = #{record.faceId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.parentMemberId != null" >
+        parent_member_id = #{record.parentMemberId,jdbcType=BIGINT},
+      </if>
+      <if test="record.parentMemberNo != null" >
+        parent_member_no = #{record.parentMemberNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.memberFee != null" >
+        member_fee = #{record.memberFee,jdbcType=INTEGER},
+      </if>
+      <if test="record.startDate != null" >
+        start_date = #{record.startDate,jdbcType=DATE},
+      </if>
+      <if test="record.endDate != null" >
+        end_date = #{record.endDate,jdbcType=DATE},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.operateId != null" >
+        operate_id = #{record.operateId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.operateDate != null" >
+        operate_date = #{record.operateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.memberBirthday != null" >
+        member_birthday = #{record.memberBirthday,jdbcType=DATE},
+      </if>
+      <if test="record.birthFlag != null" >
+        birth_flag = #{record.birthFlag,jdbcType=INTEGER},
+      </if>
+      <if test="record.birthUpdated != null" >
+        birth_updated = #{record.birthUpdated,jdbcType=INTEGER},
+      </if>
+      <if test="record.memberSex != null" >
+        member_sex = #{record.memberSex,jdbcType=INTEGER},
+      </if>
+      <if test="record.marriage != null" >
+        marriage = #{record.marriage,jdbcType=INTEGER},
+      </if>
+      <if test="record.nation != null" >
+        nation = #{record.nation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bloodType != null" >
+        blood_type = #{record.bloodType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.height != null" >
+        height = #{record.height,jdbcType=DECIMAL},
+      </if>
+      <if test="record.weight != null" >
+        weight = #{record.weight,jdbcType=DECIMAL},
+      </if>
+      <if test="record.degree != null" >
+        degree = #{record.degree,jdbcType=VARCHAR},
+      </if>
+      <if test="record.telephone != null" >
+        telephone = #{record.telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null" >
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zipCode != null" >
+        zip_code = #{record.zipCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.address != null" >
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.registerPlace != null" >
+        register_place = #{record.registerPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="record.livePlace != null" >
+        live_place = #{record.livePlace,jdbcType=VARCHAR},
+      </if>
+      <if test="record.birthPlace != null" >
+        birth_place = #{record.birthPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="record.company != null" >
+        company = #{record.company,jdbcType=VARCHAR},
+      </if>
+      <if test="record.duty != null" >
+        duty = #{record.duty,jdbcType=VARCHAR},
+      </if>
+      <if test="record.salaryLevel != null" >
+        salary_level = #{record.salaryLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hobby != null" >
+        hobby = #{record.hobby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.password != null" >
+        password = #{record.password,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createdTime != null" >
+        created_time = #{record.createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createdBy != null" >
+        created_by = #{record.createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updatedTime != null" >
+        updated_time = #{record.updatedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updatedBy != null" >
+        updated_by = #{record.updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remark != null" >
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.deleted != null" >
+        deleted = #{record.deleted,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update member_info
+    set id = #{record.id,jdbcType=BIGINT},
+      merchant_id = #{record.merchantId,jdbcType=BIGINT},
+      branch_id = #{record.branchId,jdbcType=BIGINT},
+      branch_no = #{record.branchNo,jdbcType=VARCHAR},
+      branch_name = #{record.branchName,jdbcType=VARCHAR},
+      level_id = #{record.levelId,jdbcType=BIGINT},
+      level_no = #{record.levelNo,jdbcType=VARCHAR},
+      level_name = #{record.levelName,jdbcType=VARCHAR},
+      member_no = #{record.memberNo,jdbcType=VARCHAR},
+      member_name = #{record.memberName,jdbcType=VARCHAR},
+      member_mobile = #{record.memberMobile,jdbcType=VARCHAR},
+      wechat_id = #{record.wechatId,jdbcType=VARCHAR},
+      identity_card = #{record.identityCard,jdbcType=VARCHAR},
+      face_id = #{record.faceId,jdbcType=VARCHAR},
+      parent_member_id = #{record.parentMemberId,jdbcType=BIGINT},
+      parent_member_no = #{record.parentMemberNo,jdbcType=VARCHAR},
+      member_fee = #{record.memberFee,jdbcType=INTEGER},
+      start_date = #{record.startDate,jdbcType=DATE},
+      end_date = #{record.endDate,jdbcType=DATE},
+      status = #{record.status,jdbcType=INTEGER},
+      operate_id = #{record.operateId,jdbcType=VARCHAR},
+      operate_date = #{record.operateDate,jdbcType=TIMESTAMP},
+      member_birthday = #{record.memberBirthday,jdbcType=DATE},
+      birth_flag = #{record.birthFlag,jdbcType=INTEGER},
+      birth_updated = #{record.birthUpdated,jdbcType=INTEGER},
+      member_sex = #{record.memberSex,jdbcType=INTEGER},
+      marriage = #{record.marriage,jdbcType=INTEGER},
+      nation = #{record.nation,jdbcType=VARCHAR},
+      blood_type = #{record.bloodType,jdbcType=VARCHAR},
+      height = #{record.height,jdbcType=DECIMAL},
+      weight = #{record.weight,jdbcType=DECIMAL},
+      degree = #{record.degree,jdbcType=VARCHAR},
+      telephone = #{record.telephone,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      zip_code = #{record.zipCode,jdbcType=VARCHAR},
+      address = #{record.address,jdbcType=VARCHAR},
+      register_place = #{record.registerPlace,jdbcType=VARCHAR},
+      live_place = #{record.livePlace,jdbcType=VARCHAR},
+      birth_place = #{record.birthPlace,jdbcType=VARCHAR},
+      company = #{record.company,jdbcType=VARCHAR},
+      duty = #{record.duty,jdbcType=VARCHAR},
+      salary_level = #{record.salaryLevel,jdbcType=VARCHAR},
+      hobby = #{record.hobby,jdbcType=VARCHAR},
+      password = #{record.password,jdbcType=VARCHAR},
+      created_time = #{record.createdTime,jdbcType=TIMESTAMP},
+      created_by = #{record.createdBy,jdbcType=VARCHAR},
+      updated_time = #{record.updatedTime,jdbcType=TIMESTAMP},
+      updated_by = #{record.updatedBy,jdbcType=VARCHAR},
+      remark = #{record.remark,jdbcType=VARCHAR},
+      deleted = #{record.deleted,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.com.siss.member.user.api.domain.MemberInfo" >
+    update member_info
+    <set >
+      <if test="merchantId != null" >
+        merchant_id = #{merchantId,jdbcType=BIGINT},
+      </if>
+      <if test="branchId != null" >
+        branch_id = #{branchId,jdbcType=BIGINT},
+      </if>
+      <if test="branchNo != null" >
+        branch_no = #{branchNo,jdbcType=VARCHAR},
+      </if>
+      <if test="branchName != null" >
+        branch_name = #{branchName,jdbcType=VARCHAR},
+      </if>
+      <if test="levelId != null" >
+        level_id = #{levelId,jdbcType=BIGINT},
+      </if>
+      <if test="levelNo != null" >
+        level_no = #{levelNo,jdbcType=VARCHAR},
+      </if>
+      <if test="levelName != null" >
+        level_name = #{levelName,jdbcType=VARCHAR},
+      </if>
+      <if test="memberNo != null" >
+        member_no = #{memberNo,jdbcType=VARCHAR},
+      </if>
+      <if test="memberName != null" >
+        member_name = #{memberName,jdbcType=VARCHAR},
+      </if>
+      <if test="memberMobile != null" >
+        member_mobile = #{memberMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="wechatId != null" >
+        wechat_id = #{wechatId,jdbcType=VARCHAR},
+      </if>
+      <if test="identityCard != null" >
+        identity_card = #{identityCard,jdbcType=VARCHAR},
+      </if>
+      <if test="faceId != null" >
+        face_id = #{faceId,jdbcType=VARCHAR},
+      </if>
+      <if test="parentMemberId != null" >
+        parent_member_id = #{parentMemberId,jdbcType=BIGINT},
+      </if>
+      <if test="parentMemberNo != null" >
+        parent_member_no = #{parentMemberNo,jdbcType=VARCHAR},
+      </if>
+      <if test="memberFee != null" >
+        member_fee = #{memberFee,jdbcType=INTEGER},
+      </if>
+      <if test="startDate != null" >
+        start_date = #{startDate,jdbcType=DATE},
+      </if>
+      <if test="endDate != null" >
+        end_date = #{endDate,jdbcType=DATE},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="operateId != null" >
+        operate_id = #{operateId,jdbcType=VARCHAR},
+      </if>
+      <if test="operateDate != null" >
+        operate_date = #{operateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="memberBirthday != null" >
+        member_birthday = #{memberBirthday,jdbcType=DATE},
+      </if>
+      <if test="birthFlag != null" >
+        birth_flag = #{birthFlag,jdbcType=INTEGER},
+      </if>
+      <if test="birthUpdated != null" >
+        birth_updated = #{birthUpdated,jdbcType=INTEGER},
+      </if>
+      <if test="memberSex != null" >
+        member_sex = #{memberSex,jdbcType=INTEGER},
+      </if>
+      <if test="marriage != null" >
+        marriage = #{marriage,jdbcType=INTEGER},
+      </if>
+      <if test="nation != null" >
+        nation = #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="bloodType != null" >
+        blood_type = #{bloodType,jdbcType=VARCHAR},
+      </if>
+      <if test="height != null" >
+        height = #{height,jdbcType=DECIMAL},
+      </if>
+      <if test="weight != null" >
+        weight = #{weight,jdbcType=DECIMAL},
+      </if>
+      <if test="degree != null" >
+        degree = #{degree,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="zipCode != null" >
+        zip_code = #{zipCode,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="registerPlace != null" >
+        register_place = #{registerPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="livePlace != null" >
+        live_place = #{livePlace,jdbcType=VARCHAR},
+      </if>
+      <if test="birthPlace != null" >
+        birth_place = #{birthPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="company != null" >
+        company = #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="duty != null" >
+        duty = #{duty,jdbcType=VARCHAR},
+      </if>
+      <if test="salaryLevel != null" >
+        salary_level = #{salaryLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="hobby != null" >
+        hobby = #{hobby,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTime != null" >
+        created_time = #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdBy != null" >
+        created_by = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedTime != null" >
+        updated_time = #{updatedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedBy != null" >
+        updated_by = #{updatedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null" >
+        deleted = #{deleted,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.com.siss.member.user.api.domain.MemberInfo" >
+    update member_info
+    set merchant_id = #{merchantId,jdbcType=BIGINT},
+      branch_id = #{branchId,jdbcType=BIGINT},
+      branch_no = #{branchNo,jdbcType=VARCHAR},
+      branch_name = #{branchName,jdbcType=VARCHAR},
+      level_id = #{levelId,jdbcType=BIGINT},
+      level_no = #{levelNo,jdbcType=VARCHAR},
+      level_name = #{levelName,jdbcType=VARCHAR},
+      member_no = #{memberNo,jdbcType=VARCHAR},
+      member_name = #{memberName,jdbcType=VARCHAR},
+      member_mobile = #{memberMobile,jdbcType=VARCHAR},
+      wechat_id = #{wechatId,jdbcType=VARCHAR},
+      identity_card = #{identityCard,jdbcType=VARCHAR},
+      face_id = #{faceId,jdbcType=VARCHAR},
+      parent_member_id = #{parentMemberId,jdbcType=BIGINT},
+      parent_member_no = #{parentMemberNo,jdbcType=VARCHAR},
+      member_fee = #{memberFee,jdbcType=INTEGER},
+      start_date = #{startDate,jdbcType=DATE},
+      end_date = #{endDate,jdbcType=DATE},
+      status = #{status,jdbcType=INTEGER},
+      operate_id = #{operateId,jdbcType=VARCHAR},
+      operate_date = #{operateDate,jdbcType=TIMESTAMP},
+      member_birthday = #{memberBirthday,jdbcType=DATE},
+      birth_flag = #{birthFlag,jdbcType=INTEGER},
+      birth_updated = #{birthUpdated,jdbcType=INTEGER},
+      member_sex = #{memberSex,jdbcType=INTEGER},
+      marriage = #{marriage,jdbcType=INTEGER},
+      nation = #{nation,jdbcType=VARCHAR},
+      blood_type = #{bloodType,jdbcType=VARCHAR},
+      height = #{height,jdbcType=DECIMAL},
+      weight = #{weight,jdbcType=DECIMAL},
+      degree = #{degree,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      zip_code = #{zipCode,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      register_place = #{registerPlace,jdbcType=VARCHAR},
+      live_place = #{livePlace,jdbcType=VARCHAR},
+      birth_place = #{birthPlace,jdbcType=VARCHAR},
+      company = #{company,jdbcType=VARCHAR},
+      duty = #{duty,jdbcType=VARCHAR},
+      salary_level = #{salaryLevel,jdbcType=VARCHAR},
+      hobby = #{hobby,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      created_time = #{createdTime,jdbcType=TIMESTAMP},
+      created_by = #{createdBy,jdbcType=VARCHAR},
+      updated_time = #{updatedTime,jdbcType=TIMESTAMP},
+      updated_by = #{updatedBy,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      deleted = #{deleted,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
