@@ -22,13 +22,13 @@ public class SpringbootRabbitmqApplicationTests implements RabbitTemplate.Confir
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
-    @Test
+ /*   @Test
     public void contextLoads() {
         rabbitTemplate.setMandatory(true);
         rabbitTemplate.setConfirmCallback(this);
         rabbitTemplate.convertAndSend(RabbitConfig.LOTTERY_TOPIC_EXCHANGE, LOTTERY_RECORD_ROUTING_KEY, "Hello");
         logger.info("mq成功发送数据:{}","Hello");
-    }
+    }*/
 
     @Override
     public void confirm(CorrelationData correlationData, boolean ack, String cause) {

@@ -6,9 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
-import static xjx.study.mq.springbootrabbitmq.config.RabbitConfig.LOTTERY_RECORD_ROUTING_KEY;
 
 @SpringBootApplication
 @RestController
@@ -18,10 +18,10 @@ public class SpringbootRabbitmqApplication {
     private Sender sender;
 
     @GetMapping("test")
-    public String test(){
-        for(int i = 0; i < 100; i++){
-            sender.send("message-" + i, LOTTERY_RECORD_ROUTING_KEY);
-        }
+    public String test() throws IOException {
+        /*for(int i = 0; i < 1; i++){
+            sender.send("message-" + i);
+        }*/
         return "success";
     }
     @GetMapping("result")

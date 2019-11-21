@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xjx.demo.test.testoverstock.TestProductMapper">
+    <update id="updateStock">
+        update test_product
+        set stock = stock + #{changeStock,jdbcType=INTEGER}
+        where stock &gt;= -#{changeStock,jdbcType=INTEGER}
+    </update>
+</mapper>

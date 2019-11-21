@@ -10,7 +10,7 @@ import org.hibernate.validator.constraints.NotBlank;
  **/
 public class Children extends Parent{
 
-    @NotBlank
+    @NotBlank(message = "name can not be empty")
     private String name;
 
     @Override

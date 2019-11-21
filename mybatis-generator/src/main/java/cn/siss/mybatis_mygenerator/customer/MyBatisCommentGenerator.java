@@ -20,15 +20,17 @@ public class MyBatisCommentGenerator extends DefaultCommentGenerator {
     @Override
     public void addModelClassComment(TopLevelClass topLevelClass, IntrospectedTable introspectedTable) {
         StringBuilder sb = new StringBuilder();
-
-        topLevelClass.addJavaDocLine("/**"); //$NON-NLS-1$
-
+        topLevelClass.addImportedType("io.swagger.annotations.ApiModelProperty");
+        topLevelClass.addImportedType("io.swagger.annotations.ApiModel");
+        topLevelClass.addAnnotation("@ApiModel(description = \"" +
+                introspectedTable.getRemarks() + "\")");
+        topLevelClass.addJavaDocLine("/**");
         if(introspectedTable.getRemarks() != null){
             topLevelClass.addJavaDocLine(" * " + introspectedTable.getRemarks());
         }
-        topLevelClass.addJavaDocLine(" */"); //$NON-NLS-1$
+        topLevelClass.addJavaDocLine(" */");
     }
-
+    @Override
     public void addFieldComment(Field field, IntrospectedTable introspectedTable, IntrospectedColumn introspectedColumn) {
         StringBuilder sb = new StringBuilder();
         field.addJavaDocLine("/**");
@@ -42,5 +44,6 @@ public class MyBatisCommentGenerator extends DefaultCommentGenerator {
         sb.append(introspectedColumn.getActualColumnName());
         field.addJavaDocLine(sb.toString());
         field.addJavaDocLine(" */");
+        field.addAnnotation("@ApiModelProperty(value = \"" + introspectedColumn.getRemarks() + "\")");
     }
 }

@@ -1,0 +1,20 @@
+app:
+  payConfig:
+    # \u4EE3\u7406\u5546ID
+    agentAccount: "100001_wsd"
+    # \u5BC6\u94A5
+    md5SecretKey: "0FECD2B7373741B6B4418581860CB8B0"
+    # \u652F\u4ED8\u5BA2\u6237\u7AEF\u7248\u672C\u53F7
+    clientVersion: "1.0.0.1"
+    # \u6761\u7801\u652F\u4ED8(\u5546\u6237\u626B\u987E\u5BA2\u4ED8\u6B3E\u7801)\u5730\u5740
+    tradePayUrl: "https://apis.sixunyun.com.cn/AgentSPAY/TradePay"
+    # \u8BA2\u5355\u4EA4\u6613\u67E5\u8BE2\u5730\u5740
+    tradeQueryUrl: "https://apis.sixunyun.com.cn/AgentSPAY/TradeQuery"
+    # \u8BA2\u5355\u9000\u6B3E\u5730\u5740
+    tradeRefundUrl: "https://apis.sixunyun.com.cn/AgentSPAY/TradeRefund"
+    # \u6BCF\u6279\u5904\u7406\u8BA2\u5355\u6570
+    batchDataSize: 200
+    # \u786E\u8BA4\u8BA2\u5355\u4EA4\u6613\u7ED3\u679C\u5B9A\u65F6\u4EFB\u52A1\u914D\u7F6E
+    confirmTradeOrderTaskCron: "0 0/3 * * * ?"
+    # \u8BA2\u5355\u9000\u6B3E\u4EA4\u6613\u5904\u7406\u5B9A\u65F6\u4EFB\u52A1\u914D\u7F6E
+    refundTradeTaskCron: "0 0/30 * * * ?"

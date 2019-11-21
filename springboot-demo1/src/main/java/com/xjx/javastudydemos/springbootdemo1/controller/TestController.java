@@ -1,9 +1,12 @@
 package com.xjx.javastudydemos.springbootdemo1.controller;
 
 import com.xjx.javastudydemos.springbootdemo1.controller.po.TestGetter;
+import com.xjx.javastudydemos.springbootdemo1.controller.service.InjectionTest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.beans.ConstructorProperties;
 import java.util.Date;
 
 /**
@@ -15,14 +18,14 @@ import java.util.Date;
 @RestController
 @RequestMapping("test")
 public class TestController {
-
-    public TestController(){
-
-        super();
+    private InjectionTest injectionTest;
+    public TestController(InjectionTest injectionTest) {
+        this.injectionTest = injectionTest;
     }
 
     @RequestMapping("say")
     public String sayHello(){
+        System.out.println(injectionTest) ;
         return "Hello World!" ;
     }
     @RequestMapping("getter")
